@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Power Projects Watch — Mississippi For Mississippi</title>
+<meta name="description" content="Citizen action hub tracking pipelines, gas plants, and data center infrastructure threatening Mississippi land, water, and communities. Submit FERC comments and contact your legislators before the deadlines." />
+<meta property="og:title" content="Power Projects Watch — Mississippi For Mississippi" />
+<meta property="og:description" content="Track the pipelines, gas plants, and data center infrastructure threatening Mississippi communities. Submit FERC comments and contact your legislators before the deadlines." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232d3d22'/%3E%3Cpath d='M8 22 L8 10 L13 18 L18 10 L23 18 L23 10 L24 10 L24 22' stroke='%23f5efe1' stroke-width='2' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* =====================================================
+   Mississippi For Mississippi — Power Projects Hub
+   Civic / investigative dossier aesthetic
+   ===================================================== */
+
+/* --- Tokens --- */
+:root {
+  /* Mississippi earth — cream paper, deep forest, rust urgency */
+  --paper:        #f5efe1;   /* warm magnolia cream */
+  --paper-2:      #ede4cf;   /* deeper cream for cards */
+  --paper-3:      #e3d6b8;   /* divider tone */
+  --ink:          #1c1c14;   /* near-black with warm undertone */
+  --ink-2:        #3a382b;   /* secondary text */
+  --ink-3:        #6a6a55;   /* muted */
+  --moss:         #2d3d22;   /* deep forest, primary brand */
+  --moss-2:       #4a5e35;
+  --moss-light:   #8b9c6b;
+  --rust:         #a83a1d;   /* urgent red, sparingly */
+  --rust-deep:    #7a2a14;
+  --gold:         #c08a2a;   /* sparingly for highlights */
+  --shadow-sm:    0 1px 2px rgba(28, 28, 20, 0.08);
+  --shadow:       0 4px 16px rgba(28, 28, 20, 0.10);
+  --shadow-lg:    0 20px 60px rgba(28, 28, 20, 0.15);
+
+  --serif: "Fraunces", "Source Serif 4", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, monospace;
+
+  --container-w: 1200px;
+  --container-narrow: 760px;
+  --radius-sm: 4px;
+  --radius:    8px;
+  --radius-lg: 16px;
+}
+
+/* --- Reset / Base --- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { max-width: 100%; display: block; }
+a { color: var(--moss); text-decoration: none; transition: color 0.15s ease; }
+a:hover { color: var(--rust); }
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2.4rem, 5vw, 4rem); letter-spacing: -0.025em; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.02em; }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+h4 { font-size: 1.05rem; font-family: var(--sans); font-weight: 600; letter-spacing: 0; }
+p  { margin: 0 0 1em; max-width: 70ch; }
+
+/* --- Layout helpers --- */
+.container { width: 100%; max-width: var(--container-w); margin: 0 auto; padding: 0 24px; }
+.container--narrow { max-width: var(--container-narrow); }
+.section { padding: clamp(48px, 8vw, 120px) 0; }
+.section--tight { padding: clamp(32px, 5vw, 64px) 0; }
+
+/* --- Top bar --- */
+.topbar {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.topbar a { color: var(--paper); text-decoration: underline; text-underline-offset: 3px; }
+.topbar a:hover { color: var(--gold); }
+.topbar-deadline { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Last-updated stripe — sits below the urgent topbar */
+.updated-stripe {
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.updated-stripe .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex-wrap: wrap;
+}
+.updated-stripe .live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--moss);
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: live-pulse 2.4s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(45,61,34,0.35); }
+  50% { box-shadow: 0 0 0 5px rgba(45,61,34,0); }
+}
+.updated-stripe .updated-label { color: var(--moss); font-weight: 500; }
+.updated-stripe .updated-time  { color: var(--ink); }
+.updated-stripe .updated-meta  { color: var(--ink-2); }
+@media (max-width: 640px) {
+  .updated-stripe { font-size: 10px; }
+  .updated-stripe .container { gap: 8px; }
+  .updated-stripe .updated-meta { display: none; }
+}
+.topbar-deadline::before {
+  content: "";
+  width: 8px; height: 8px;
+  background: var(--rust);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* --- Header / nav --- */
+.site-header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--paper-3);
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(8px);
+  background: rgba(245, 239, 225, 0.92);
+}
+.site-header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 18px; padding-bottom: 18px;
+  gap: 24px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark { width: 44px; height: 44px; flex-shrink: 0; }
+.brand-text {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.brand-text small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-top: 2px;
+}
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a {
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav a:hover { color: var(--rust); }
+.nav-cta {
+  background: var(--moss);
+  color: var(--paper) !important;
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.nav-cta:hover { background: var(--rust); }
+@media (max-width: 760px) {
+  .nav a:not(.nav-cta) { display: none; }
+}
+
+/* --- Hero (homepage) --- */
+.hero {
+  padding: clamp(60px, 10vw, 120px) 0 clamp(40px, 6vw, 80px);
+  background: var(--paper);
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; gap: 32px; } }
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 20px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 24px; height: 1px; background: var(--rust);
+}
+.hero h1 { margin-top: 0; }
+.hero-lede {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 38ch;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.btn--primary { background: var(--rust); color: var(--paper); }
+.btn--primary:hover { background: var(--rust-deep); color: var(--paper); transform: translateY(-1px); }
+.btn--secondary { background: var(--moss); color: var(--paper); }
+.btn--secondary:hover { background: var(--moss-2); color: var(--paper); transform: translateY(-1px); }
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn--ghost:hover { background: var(--ink); color: var(--paper); }
+.btn--sm { padding: 8px 14px; font-size: 13px; }
+.btn-arrow { transition: transform 0.15s ease; }
+.btn:hover .btn-arrow { transform: translateX(3px); }
+
+/* --- Hero stat card --- */
+.urgent-card {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.urgent-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--rust), var(--gold));
+}
+.urgent-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.urgent-card-label::before {
+  content: ""; width: 6px; height: 6px; background: var(--rust); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.urgent-card h3 {
+  color: var(--paper);
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.urgent-card-meta {
+  font-size: 13px;
+  color: var(--paper);
+  opacity: 0.75;
+  margin-bottom: 24px;
+  font-family: var(--mono);
+}
+.countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 24px; }
+.countdown-unit {
+  background: rgba(245, 239, 225, 0.08);
+  border: 1px solid rgba(245, 239, 225, 0.15);
+  padding: 14px 6px;
+  text-align: center;
+  border-radius: 6px;
+}
+.countdown-num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--paper);
+  display: block;
+}
+.countdown-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper);
+  opacity: 0.6;
+  margin-top: 6px;
+  display: block;
+}
+.urgent-card .btn { width: 100%; justify-content: center; }
+
+/* --- Section header --- */
+.section-header {
+  display: flex; align-items: end; justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.section-header h2 { margin-bottom: 8px; }
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 12px;
+}
+.section-desc { color: var(--ink-2); max-width: 60ch; margin-bottom: 0; }
+
+/* --- Project cards (grid) --- */
+.projects { background: var(--paper-2); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+.project-card {
+  background: var(--paper);
+  border: 1px solid var(--paper-3);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex; flex-direction: column;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink);
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: var(--moss);
+  color: var(--ink);
+}
+.project-card--urgent { border-color: var(--rust); border-width: 2px; }
+.project-card--urgent::before {
+  content: "ACTION NEEDED";
+  position: absolute; top: 14px; right: 14px;
+  background: var(--rust); color: var(--paper);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.project-card--coming { opacity: 0.85; }
+.project-card--coming:hover { opacity: 1; }
+.project-status {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.project-status--urgent { color: var(--rust); }
+.project-status--scoping { color: var(--ink-3); }
+.project-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+}
+.project-meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+  display: flex; flex-wrap: wrap; gap: 6px 12px;
+}
+.project-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.project-summary {
+  color: var(--ink-2);
+  font-size: 15px;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+.project-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--paper-3);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--moss);
+}
+.project-footer .deadline {
+  font-family: var(--mono);
+  color: var(--ink-3);
+  font-weight: 400;
+}
+.project-card--urgent .project-footer .deadline { color: var(--rust); font-weight: 600; }
+
+/* --- Dossier page --- */
+.dossier-hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(60px, 8vw, 100px) 0 clamp(40px, 6vw, 70px);
+  position: relative;
+  overflow: hidden;
+}
+.dossier-hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(168, 58, 29, 0.15), transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(45, 61, 34, 0.25), transparent 50%);
+  pointer-events: none;
+}
+.dossier-hero .container { position: relative; z-index: 1; }
+.dossier-breadcrumb {
+  font-size: 13px;
+  font-family: var(--mono);
+  color: var(--paper);
+  opacity: 0.6;
+  margin-bottom: 32px;
+}
+.dossier-breadcrumb a { color: var(--paper); opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.dossier-breadcrumb a:hover { color: var(--gold); }
+.dossier-hero h1 { color: var(--paper); margin-bottom: 16px; max-width: 18ch; }
+.dossier-tagline {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  color: var(--paper);
+  opacity: 0.85;
+  max-width: 50ch;
+  margin-bottom: 32px;
+}
+.dossier-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 24px;
+  background: rgba(245, 239, 225, 0.06);
+  border-left: 3px solid var(--rust);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-top: 16px;
+}
+.dossier-meta-item label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper);
+  opacity: 0.55;
+  margin-bottom: 6px;
+}
+.dossier-meta-item .value {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--paper);
+  line-height: 1.4;
+}
+
+/* --- TOC + content layout --- */
+.dossier-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 56px;
+  align-items: start;
+  padding-top: clamp(40px, 6vw, 80px);
+  padding-bottom: clamp(60px, 8vw, 120px);
+}
+@media (max-width: 960px) { .dossier-body { grid-template-columns: 1fr; gap: 32px; } }
+.dossier-toc {
+  position: sticky; top: 100px;
+  font-size: 14px;
+  border-left: 1px solid var(--paper-3);
+  padding-left: 20px;
+}
+.dossier-toc h4 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.dossier-toc ul { list-style: none; padding: 0; margin: 0; }
+.dossier-toc li { margin-bottom: 10px; }
+.dossier-toc a {
+  color: var(--ink-2);
+  font-weight: 500;
+  display: block;
+  padding-left: 0;
+  border-left: 2px solid transparent;
+  margin-left: -22px;
+  padding-left: 20px;
+  transition: all 0.15s ease;
+}
+.dossier-toc a:hover { color: var(--rust); border-color: var(--rust); }
+.dossier-toc a.active { color: var(--moss); border-color: var(--moss); font-weight: 600; }
+@media (max-width: 960px) {
+  .dossier-toc { position: static; border-left: 0; border-top: 1px solid var(--paper-3); padding: 16px 0 0; }
+}
+
+.dossier-content { max-width: 720px; }
+.dossier-content h2 {
+  margin-top: 56px;
+  padding-top: 16px;
+  scroll-margin-top: 100px;
+  border-top: 1px solid var(--paper-3);
+}
+.dossier-content h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.dossier-content h3 { margin-top: 32px; }
+.dossier-content p, .dossier-content li {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.dossier-content ul, .dossier-content ol {
+  padding-left: 22px;
+  margin-bottom: 1.2em;
+}
+.dossier-content li { margin-bottom: 8px; }
+.dossier-content strong { color: var(--ink); font-weight: 600; }
+.dossier-content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.dossier-content a:hover { color: var(--rust); }
+.dossier-content blockquote {
+  border-left: 3px solid var(--rust);
+  padding: 4px 0 4px 24px;
+  margin: 32px 0;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* --- Fact callout --- */
+.fact-box {
+  background: var(--paper-2);
+  border: 1px solid var(--paper-3);
+  border-left: 4px solid var(--moss);
+  padding: 20px 24px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 28px 0;
+}
+.fact-box--alert { border-left-color: var(--rust); }
+.fact-box label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 8px;
+  display: block;
+}
+.fact-box--alert label { color: var(--rust); }
+.fact-box p { font-size: 15px; margin-bottom: 0; }
+.fact-box-source {
+  display: block; margin-top: 10px;
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* Pending content placeholder */
+.pending {
+  background: var(--paper-2);
+  border: 1px dashed var(--paper-3);
+  padding: 24px;
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 14px;
+  margin: 20px 0;
+}
+.pending strong { color: var(--ink-2); display: block; margin-bottom: 6px; font-family: var(--serif); font-size: 16px; }
+
+/* --- Stats grid --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.stat {
+  background: var(--paper);
+  border: 1px solid var(--paper-3);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.stat-num {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--moss);
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.stat-num--alert { color: var(--rust); }
+.stat-label {
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+/* --- Action kit (sticky bottom on mobile, full section on desktop) --- */
+.action-kit {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(48px, 7vw, 80px) 0;
+}
+.action-kit h2 { color: var(--paper); }
+.action-kit .section-eyebrow { color: var(--gold); }
+.action-kit p { color: var(--paper); opacity: 0.85; }
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.action-card {
+  background: rgba(245, 239, 225, 0.06);
+  border: 1px solid rgba(245, 239, 225, 0.12);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  display: flex; flex-direction: column;
+  transition: all 0.15s ease;
+}
+.action-card:hover {
+  background: rgba(245, 239, 225, 0.1);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.action-card-num {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  margin-bottom: 18px;
+}
+.action-card h3 { color: var(--paper); font-size: 1.15rem; margin-bottom: 10px; }
+.action-card p { font-size: 14px; line-height: 1.5; opacity: 0.8; margin-bottom: 20px; flex-grow: 1; }
+.action-card .btn { align-self: flex-start; }
+.action-card .btn--ghost {
+  color: var(--paper);
+  border-color: rgba(245, 239, 225, 0.4);
+}
+.action-card .btn--ghost:hover { background: var(--paper); color: var(--ink); }
+
+/* Comment template */
+.comment-template {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 24px;
+  border-radius: var(--radius);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-top: 16px;
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--paper-3);
+}
+.copy-btn {
+  background: var(--gold);
+  color: var(--ink);
+  border: 0;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 12px;
+  font-family: var(--sans);
+  transition: all 0.15s ease;
+}
+.copy-btn:hover { background: var(--paper); }
+.copy-btn--copied { background: var(--moss-light); }
+
+/* --- Counties chip list --- */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 28px; }
+.chip {
+  background: var(--paper-2);
+  border: 1px solid var(--paper-3);
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 999px;
+  color: var(--ink-2);
+  font-family: var(--mono);
+}
+
+/* --- Footer --- */
+.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 60px 0 32px;
+}
+.site-footer p { color: var(--paper); opacity: 0.7; font-size: 14px; }
+.site-footer a { color: var(--paper); text-decoration: underline; text-underline-offset: 3px; }
+.site-footer a:hover { color: var(--gold); }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+@media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; gap: 24px; } }
+.footer-brand .brand-text { color: var(--paper); }
+.footer-brand .brand-text small { color: var(--gold); }
+.footer-grid h4 {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper);
+  opacity: 0.6;
+  margin-bottom: 16px;
+}
+.footer-grid ul { list-style: none; padding: 0; margin: 0; }
+.footer-grid li { margin-bottom: 8px; font-size: 14px; }
+.footer-bottom {
+  border-top: 1px solid rgba(245, 239, 225, 0.12);
+  padding-top: 24px;
+  font-size: 12px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  color: var(--paper); opacity: 0.6;
+}
+
+/* --- Utility --- */
+.text-rust { color: var(--rust); }
+.text-moss { color: var(--moss); }
+.mono { font-family: var(--mono); }
+.no-wrap { white-space: nowrap; }
+
+/* Source tag */
+.source-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--moss);
+  background: var(--paper-2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--paper-3);
+  text-decoration: none;
+  margin: 0 2px;
+  vertical-align: baseline;
+}
+.source-tag:hover { background: var(--moss); color: var(--paper); }
+.source-tag::before { content: "↗"; opacity: 0.6; }
+
+
+/* === BUNDLED-FILE VIEW SWITCHER === */
+.view { display: none; }
+.view.active { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ============ HOME VIEW ============ -->
+<div class="view active" id="view-home">
+
+
+<!-- TOP STATUS BAR -->
+<div class="topbar">
+  <div class="container">
+    <span class="topbar-deadline">
+      <strong>Action needed:</strong>&nbsp;Kosciusko Junction Pipeline FERC comments due <strong>May 25 · 5:00 PM ET</strong>
+    </span>
+    <a href="#kj" data-view="kj">Take action →</a>
+  </div>
+</div>
+
+<!-- LAST UPDATED STRIPE -->
+<div class="updated-stripe">
+  <div class="container">
+    <span>
+      <span class="live-dot" aria-hidden="true"></span>
+      <span class="updated-label">Last updated</span>&nbsp;<span class="updated-time" data-updated-time>Tuesday, May 19, 2026 · 11:55 AM CT</span>
+    </span>
+    <span class="updated-meta">Tracking 6 projects · 2 active comment windows</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="#home" data-view="home" class="brand">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="10" fill="#2d3d22"/>
+        <!-- Magnolia-style mark: stylized M with rising bars -->
+        <path d="M14 46 L14 18 L24 36 L32 18 L40 36 L50 18 L50 46" stroke="#f5efe1" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="32" cy="50" r="2.5" fill="#c08a2a"/>
+      </svg>
+      <span class="brand-text">
+        Mississippi For Mississippi
+        <small>Power Projects Watch</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#projects">Projects</a>
+      <a href="#how">How comments work</a>
+      <a href="#about">About</a>
+      <a href="#kj" data-view="kj" class="nav-cta">Take action</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Citizen action dossiers · Mississippi</div>
+        <h1>The projects coming for our land, water, and wallets.</h1>
+        <p class="hero-lede">A public record of the pipelines, gas plants, and data center infrastructure under review across Mississippi — with the facts, the deadlines, and the tools to make your voice count.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn--primary">See active projects <span class="btn-arrow">→</span></a>
+          <a href="#how" class="btn btn--ghost">How comments work</a>
+        </div>
+      </div>
+
+      <!-- URGENT CARD -->
+      <aside class="urgent-card" aria-labelledby="urgent-title">
+        <div class="urgent-card-label">Most urgent</div>
+        <h3 id="urgent-title">Kosciusko Junction Pipeline</h3>
+        <div class="urgent-card-meta">FERC Dockets CP25-547 / CP25-549</div>
+        <div class="countdown" id="countdown" aria-label="Time remaining">
+          <div class="countdown-unit"><span class="countdown-num" id="cd-days">—</span><span class="countdown-label">Days</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-hours">—</span><span class="countdown-label">Hours</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-mins">—</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-secs">—</span><span class="countdown-label">Sec</span></div>
+        </div>
+        <a href="#kj" data-view="kj" class="btn btn--primary">Open the dossier <span class="btn-arrow">→</span></a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS GRID -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Active dockets</div>
+        <h2>Projects on the record right now</h2>
+        <p class="section-desc">Every project below has a live regulatory docket — at FERC, the Mississippi Public Service Commission, or both. Click in to see who is behind it, what it will do, and how to comment.</p>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Kosciusko Junction Pipeline -->
+      <a href="#kj" data-view="kj" class="project-card project-card--urgent">
+        <div class="project-status project-status--urgent">● Comment deadline: May 25</div>
+        <h3>Kosciusko Junction Pipeline</h3>
+        <div class="project-meta">
+          <span>CP25-547 / CP25-549</span>
+          <span>· FERC</span>
+          <span>· 9 counties</span>
+        </div>
+        <p class="project-summary">A 111-mile, 36-inch natural gas pipeline by Boardwalk subsidiaries Gulf South and Texas Gas, with two new compressor stations to deliver 1.175 Bcf/day to power and data center customers.</p>
+        <div class="project-footer">
+          <span>Open dossier →</span>
+          <span class="deadline">5:00 PM ET, May 25</span>
+        </div>
+      </a>
+
+      <!-- Mississippi Crossing -->
+      <div class="project-card project-card--coming">
+        <div class="project-status">● Comment window open</div>
+        <h3>Mississippi Crossing Project</h3>
+        <div class="project-meta">
+          <span>CP25-514</span>
+          <span>· FERC</span>
+          <span>· 4+ counties</span>
+        </div>
+        <p class="project-summary">Tennessee Gas Pipeline's expansion through Neshoba, Attala, Leake, and Winston counties — part of a multi-billion-dollar buildout to serve Southeast data center demand.</p>
+        <div class="project-footer">
+          <span>Dossier in progress</span>
+          <span class="deadline">Tracking</span>
+        </div>
+      </div>
+
+      <!-- Kosciusko Compressor -->
+      <div class="project-card project-card--coming">
+        <div class="project-status project-status--urgent">● Comment deadline: June 8</div>
+        <h3>Kosciusko Compressor Station Replacement</h3>
+        <div class="project-meta">
+          <span>CP26-24</span>
+          <span>· FERC</span>
+          <span>· Attala County</span>
+        </div>
+        <p class="project-summary">A compressor station replacement on the existing Gulf South system in Attala County. Environmental Assessment open for public comment.</p>
+        <div class="project-footer">
+          <span>Dossier in progress</span>
+          <span class="deadline">5:00 PM ET, June 8</span>
+        </div>
+      </div>
+
+      <!-- SSE4 -->
+      <div class="project-card project-card--coming">
+        <div class="project-status">● Comment window open</div>
+        <h3>Southeast Supply Enhancement (SSE4)</h3>
+        <div class="project-meta">
+          <span>CP25-517</span>
+          <span>· FERC</span>
+        </div>
+        <p class="project-summary">Multi-state expansion to deliver more gas to the Southeast, tied to data center load growth. Environmental review ongoing.</p>
+        <div class="project-footer">
+          <span>Dossier in progress</span>
+          <span class="deadline">Tracking</span>
+        </div>
+      </div>
+
+      <!-- Prado AI -->
+      <div class="project-card project-card--coming">
+        <div class="project-status">● MPSC docket open</div>
+        <h3>Prado AI 350 MW Gas Plant</h3>
+        <div class="project-meta">
+          <span>2026-AD-10</span>
+          <span>· MPSC</span>
+        </div>
+        <p class="project-summary">A 350-megawatt natural gas power plant proposed to serve hyperscale data center load, under review at the Mississippi Public Service Commission.</p>
+        <div class="project-footer">
+          <span>Dossier in progress</span>
+          <span class="deadline">Tracking</span>
+        </div>
+      </div>
+
+      <!-- Delta MS Gas -->
+      <div class="project-card project-card--coming">
+        <div class="project-status">● MPSC docket open</div>
+        <h3>Delta MS Gas Accounting Docket</h3>
+        <div class="project-meta">
+          <span>2026-UA-15</span>
+          <span>· MPSC</span>
+        </div>
+        <p class="project-summary">An accounting change that could shift data center infrastructure costs onto residential gas customers across Mississippi.</p>
+        <div class="project-footer">
+          <span>Dossier in progress</span>
+          <span class="deadline">Tracking</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW COMMENTS WORK -->
+<section class="section" id="how" style="background: var(--paper);">
+  <div class="container container--narrow">
+    <div class="section-eyebrow">Plain-language guide</div>
+    <h2>How a public comment actually works</h2>
+    <p>Federal agencies and state commissions are legally required to consider comments from the public before they approve large infrastructure projects. They do not all carry the same weight — but together they shape what regulators write into the final environmental record, what they require as mitigation, and what becomes evidence in any future legal challenge.</p>
+
+    <h3 style="margin-top:36px;">A comment doesn't have to be long.</h3>
+    <p>It needs to be specific. The most useful comments name the project and docket, state who you are and why you're affected, and raise concrete concerns regulators can investigate — water sources, wildlife, soil, air quality, safety distances, traffic, or whether the public benefit really justifies the harm.</p>
+
+    <h3 style="margin-top:36px;">You can comment without becoming a "party."</h3>
+    <p>Filing a comment with FERC does not commit you to anything. To get the right to appeal a final decision in court, you (or an organization that represents you) must "intervene" — a separate, more formal step. Either way, both comments and interventions go into the public record.</p>
+
+    <h3 style="margin-top:36px;">Each project page walks you through it.</h3>
+    <p>On every dossier you'll find a copy-ready sample comment, the FERC eComment link, your state legislator contacts, and printable scripts for calling or mailing. Use what's helpful. Personalize what you can. Your county-specific knowledge — what's downstream from your land, where your kids go to school, what your wells are pulling from — is exactly what regulators don't have on their own.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about" style="background: var(--paper-2);">
+  <div class="container container--narrow">
+    <div class="section-eyebrow">About this hub</div>
+    <h2>Who built this and why</h2>
+    <p>This is a project of <strong>Mississippi For Mississippi PAC</strong> — a grassroots political action committee organizing rural Mississippi communities against hyperscale data center expansion and the pipelines, gas plants, and transmission lines built to serve them.</p>
+    <p>Every claim on this site links to a primary source: a FERC filing, a Federal Register notice, an EPA letter, a Mississippi Department of Environmental Quality permit. We won't ask you to trust us — we'll show you the receipts and let you make your own case in your own words.</p>
+    <p>Questions, corrections, or want to share a filing you've received as a landowner? Reach the PAC at <a href="mailto:mississippiformississippi@outlook.com">mississippiformississippi@outlook.com</a>.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="10" fill="#c08a2a"/>
+            <path d="M14 46 L14 18 L24 36 L32 18 L40 36 L50 18 L50 46" stroke="#1c1c14" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="32" cy="50" r="2.5" fill="#2d3d22"/>
+          </svg>
+          <span class="brand-text">
+            Mississippi For Mississippi
+            <small>Power Projects Watch</small>
+          </span>
+        </div>
+        <p style="margin-top:16px; max-width: 38ch;">Grassroots citizen action hub tracking the regulatory dockets that decide what gets built across rural Mississippi.</p>
+      </div>
+      <div>
+        <h4>Primary records</h4>
+        <ul>
+          <li><a href="https://elibrary.ferc.gov/eLibrary/search">FERC eLibrary</a></li>
+          <li><a href="https://www.psc.state.ms.us/">MS Public Service Commission</a></li>
+          <li><a href="https://www.mdeq.ms.gov/">MS Dept. of Environmental Quality</a></li>
+          <li><a href="https://www.federalregister.gov/">Federal Register</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:mississippiformississippi@outlook.com">mississippiformississippi@outlook.com</a></li>
+          <li>Philadelphia, Mississippi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mississippi For Mississippi PAC.</span>
+      <span>Every fact on this site links to its primary regulatory source.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</div>
+
+<!-- ============ KOSCIUSKO JUNCTION DOSSIER VIEW ============ -->
+<div class="view" id="view-kj">
+
+
+<!-- TOP STATUS BAR -->
+<div class="topbar">
+  <div class="container">
+    <span class="topbar-deadline">
+      <strong>Deadline:</strong>&nbsp;Comments due to FERC <strong>May 25 · 5:00 PM ET</strong>
+    </span>
+    <a href="#action-kit">Jump to the action kit ↓</a>
+  </div>
+</div>
+
+<!-- LAST UPDATED STRIPE -->
+<div class="updated-stripe">
+  <div class="container">
+    <span>
+      <span class="live-dot" aria-hidden="true"></span>
+      <span class="updated-label">Last updated</span>&nbsp;<span class="updated-time" data-updated-time>Tuesday, May 19, 2026 · 11:55 AM CT</span>
+    </span>
+    <span class="updated-meta">Kosciusko Junction Pipeline dossier</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="#home" data-view="home" class="brand">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="10" fill="#2d3d22"/>
+        <path d="M14 46 L14 18 L24 36 L32 18 L40 36 L50 18 L50 46" stroke="#f5efe1" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="32" cy="50" r="2.5" fill="#c08a2a"/>
+      </svg>
+      <span class="brand-text">
+        Mississippi For Mississippi
+        <small>Power Projects Watch</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#projects">All projects</a>
+      <a href="../index.html#how">How comments work</a>
+      <a href="#action-kit" class="nav-cta">Take action</a>
+    </nav>
+  </div>
+</header>
+
+<!-- DOSSIER HERO -->
+<section class="dossier-hero">
+  <div class="container">
+    <div class="dossier-breadcrumb">
+      <a href="#home" data-view="home">Home</a> &nbsp;/&nbsp; <a href="../index.html#projects">Projects</a> &nbsp;/&nbsp; Kosciusko Junction Pipeline
+    </div>
+    <h1>Kosciusko Junction Pipeline</h1>
+    <p class="dossier-tagline">A 111-mile, 36-inch natural gas pipeline and two new compressor stations cutting across nine Mississippi counties — designed to deliver 1.175 billion cubic feet of gas per day to power and data center customers downstream.</p>
+
+    <div class="dossier-meta">
+      <div class="dossier-meta-item">
+        <label>FERC Dockets</label>
+        <div class="value">CP25-547-000<br>CP25-549-000</div>
+      </div>
+      <div class="dossier-meta-item">
+        <label>Applicants</label>
+        <div class="value">Gulf South Pipeline Company &middot; Texas Gas Transmission<br>(Boardwalk Pipelines)</div>
+      </div>
+      <div class="dossier-meta-item">
+        <label>Status</label>
+        <div class="value">Draft EIS issued<br>April 1, 2026</div>
+      </div>
+      <div class="dossier-meta-item">
+        <label>Public comment deadline</label>
+        <div class="value" style="color:#ff7a55;">May 25, 2026<br>5:00 PM ET</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BODY: TOC + CONTENT -->
+<div class="container">
+  <div class="dossier-body">
+
+    <!-- TOC -->
+    <aside class="dossier-toc">
+      <h4>In this dossier</h4>
+      <ul>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#what">What is being built</a></li>
+        <li><a href="#who">Who is behind it</a></li>
+        <li><a href="#where">Where it crosses</a></li>
+        <li><a href="#wildlife">Wildlife &amp; habitat</a></li>
+        <li><a href="#water">Water &amp; soil</a></li>
+        <li><a href="#chemicals">Chemicals &amp; emissions</a></li>
+        <li><a href="#workforce">Workforce &amp; wages</a></li>
+        <li><a href="#ej">Environmental justice</a></li>
+        <li><a href="#cultural">Cultural &amp; tribal</a></li>
+        <li><a href="#process">Why the process is broken</a></li>
+        <li><a href="#action-kit">Take action</a></li>
+        <li><a href="#sources">All sources</a></li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="dossier-content">
+
+      <section id="summary">
+        <h2>The summary</h2>
+        <p>On April 1, 2026, the Federal Energy Regulatory Commission released a Draft Environmental Impact Statement for the <strong>Kosciusko Junction Pipeline Project</strong>, proposed by two Boardwalk Pipelines subsidiaries — Gulf South Pipeline Company and Texas Gas Transmission. <a href="https://www.govinfo.gov/content/pkg/FR-2026-04-06/html/2026-06635.htm" class="source-tag">Federal Register</a></p>
+
+        <p>The project would build approximately <strong>111 miles of new 36-inch natural gas pipeline</strong> across nine Mississippi counties, plus an 8.1-mile Columbia Gulf Lateral, two brand-new compressor stations totaling more than 85,000 horsepower, modifications to an existing compressor station, and four new meter stations. <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260514-5033" class="source-tag">MS Rising Coalition Motion</a></p>
+
+        <p>The applicants say it will deliver <strong>1.175 billion cubic feet of gas per day</strong> in new firm transportation capacity — capacity that industry reporting ties directly to hyperscale power and data center load growth across the Southeast. <a href="https://pgjonline.com/news/2025/december/gulf-south-s-111-mile-kosciusko-junction-pipeline-enters-federal-review" class="source-tag">PGJ Online</a></p>
+
+        <p>The total project cost stated in the Applicants' Resource Report 5 is <strong>$991,510,000</strong> — a nearly billion-dollar federal authorization. Yet by FERC's own staff calculations, only <strong>11 to 16 permanent jobs</strong> would remain in Mississippi after construction. <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Rep. Thompson Comments, Acc. 20260518-0003</a></p>
+
+        <div class="fact-box fact-box--alert">
+          <label>The hinge</label>
+          <p>FERC is accepting public comments on the Draft EIS only until <strong>5:00 PM Eastern Time on May 25, 2026</strong>. After that window closes, the staff begins writing the Final EIS — and your ability to put concerns on the regulatory record narrows dramatically.</p>
+          <span class="fact-box-source">Source: Federal Register Vol. 91, No. 65, April 6, 2026 — Notice of Availability of Draft EIS</span>
+        </div>
+      </section>
+
+      <section id="what">
+        <h2>What is actually being built</h2>
+
+        <div class="stats-grid">
+          <div class="stat"><span class="stat-num">111<span style="font-size:1rem;"> mi</span></span><span class="stat-label">New 36-inch pipeline through Mississippi</span></div>
+          <div class="stat"><span class="stat-num">9</span><span class="stat-label">Mississippi counties crossed</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">Compressor stations (2 new, 1 modified)</span></div>
+          <div class="stat"><span class="stat-num stat-num--alert">133k+<span style="font-size:1rem;"> hp</span></span><span class="stat-label">Combined new compressor horsepower</span></div>
+          <div class="stat"><span class="stat-num">1.175<span style="font-size:1rem;"> Bcf/d</span></span><span class="stat-label">New firm gas transport capacity</span></div>
+          <div class="stat"><span class="stat-num">4</span><span class="stat-label">New meter stations</span></div>
+          <div class="stat"><span class="stat-num stat-num--alert">$991M</span><span class="stat-label">Total project cost (Resource Report 5)</span></div>
+          <div class="stat"><span class="stat-num stat-num--alert">77%</span><span class="stat-label">Of impacted census block groups are EJ communities</span></div>
+          <div class="stat"><span class="stat-num stat-num--alert">1,539</span><span class="stat-label">Out-of-state workers projected at peak (DEIS § 4.7.3)</span></div>
+        </div>
+
+        <h3>The new infrastructure, line by line</h3>
+        <p>According to the Federal Register Notice of Availability for the Draft EIS, the proposal includes: <a href="https://www.govinfo.gov/content/pkg/FR-2026-04-06/html/2026-06635.htm" class="source-tag">FR Notice</a></p>
+
+        <ul>
+          <li><strong>Gulf South side:</strong>
+            <ul>
+              <li>A new <strong>102.9-mile, 36-inch Kosciusko Junction (KJ) Pipeline</strong></li>
+              <li>A new <strong>8.1-mile, 36-inch Columbia Gulf Lateral</strong></li>
+              <li>A new <strong>Holmes Compressor Station</strong> — 23,984 horsepower, single natural-gas-fired unit, located along the existing Greenville Lateral</li>
+              <li>A new <strong>Kosciusko Compressor Station</strong> — 61,293 horsepower across <em>three</em> natural-gas-fired units, located along the new KJ Pipeline</li>
+              <li>Two new natural-gas-fired compressor units totaling <strong>24,615 horsepower</strong> added at the existing Isola Compressor Station</li>
+              <li>Four new meter stations: Columbia Gulf, Destin Check, SONAT, and Kosciusko</li>
+              <li>Four mainline valves, tie-ins, launcher/receiver facilities, and other appurtenances</li>
+            </ul>
+          </li>
+          <li><strong>Texas Gas side:</strong>
+            <ul>
+              <li>Abandonment by sale to Gulf South of the existing Greenville Lateral — three 36-inch pipelines totaling 97.74 miles, plus a 0.37-mile 20-inch line</li>
+              <li>Abandonment by sale of the existing Isola Compressor Station</li>
+              <li>A new <strong>24,160-horsepower</strong> gas-fired compressor unit installed at the existing Greenville Compressor Station</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="fact-box">
+          <label>Translation</label>
+          <p>The applicants are not just building one new pipeline. They are <em>reorganizing</em> the existing Boardwalk gas network in the Delta and central Mississippi, transferring assets between two affiliated companies, and adding enough new compression to drive a massive new flow of gas to wherever the contracts point.</p>
+        </div>
+      </section>
+
+      <section id="who">
+        <h2>Who is behind it</h2>
+
+        <h3>The applicants</h3>
+        <p><strong>Gulf South Pipeline Company, LLC</strong> and <strong>Texas Gas Transmission, LLC</strong> filed the joint application on September 12, 2025. Both companies are wholly-owned subsidiaries of <strong>Boardwalk Pipelines, LP</strong>, which in turn is owned by Loews Corporation. <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260514-5033" class="source-tag">CP25-547 Filing Record</a></p>
+
+        <p>The lead "Director, Certificates" signing applicant filings is <strong>Shannon M. Miller</strong>, phone (713) 321-8420, as confirmed on the May 15, 2026 weekly status report filing to FERC. <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260515-5118" class="source-tag">Accession 20260515-5118</a></p>
+
+        <h3>The customer question</h3>
+        <p>Industry trade press reporting at the time the project entered federal review tied the 1.175 Bcf/day capacity directly to <strong>Southeast power and data center demand</strong>, with FERC's review schedule structured to reach a final order by September 17, 2026. <a href="https://pgjonline.com/news/2025/december/gulf-south-s-111-mile-kosciusko-junction-pipeline-enters-federal-review" class="source-tag">PGJ Online</a></p>
+
+        <div class="pending">
+          <strong>Sourcing in progress — Precedent agreements &amp; shippers</strong>
+          We are extracting the named shippers and precedent agreements from the Draft EIS and the CP25-547 application docket. This section will be updated with the specific contracted customers and volumes as we verify them in the public record.
+        </div>
+      </section>
+
+      <section id="where">
+        <h2>Where it crosses</h2>
+
+        <p>The Mississippi Rising Coalition's formal motion to intervene, filed with FERC on May 14, 2026, lists the nine Mississippi counties through which the project would traverse: <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260514-5033" class="source-tag">MS Rising Motion</a></p>
+
+        <div class="chips" aria-label="Affected counties">
+          <span class="chip">Washington</span>
+          <span class="chip">Sunflower</span>
+          <span class="chip">Humphreys</span>
+          <span class="chip">Holmes</span>
+          <span class="chip">Attala</span>
+          <span class="chip">Leake</span>
+          <span class="chip">Newton</span>
+          <span class="chip">Jasper</span>
+          <span class="chip">Clarke</span>
+        </div>
+
+        <p>FERC held three in-person public comment sessions in April 2026 — at Waynesboro, Carthage, and Lexington — covering the southern, central, and northern portions of the route. Carthage and Lexington are county seats of Leake and Holmes counties respectively. <a href="https://www.govinfo.gov/content/pkg/FR-2026-04-06/html/2026-06635.htm" class="source-tag">FR Notice</a></p>
+
+        <div class="pending">
+          <strong>Sourcing in progress — Detailed route map &amp; landowner impacts</strong>
+          The applicants' route maps, parcel crossings, and 25-foot residential setback list (Appendix 8G of the application, FERC Accession 20260116-5091) are being verified for inclusion. If you are a landowner along the route and have received a notice from Gulf South or Perennial Environmental, we want to hear from you.
+        </div>
+      </section>
+
+      <section id="wildlife">
+        <h2>Wildlife &amp; habitat</h2>
+        <p>The Draft EIS acknowledges the project crosses wetlands, streams, and forested habitat across nine counties. The Mississippi Rising Coalition's intervention names <strong>"streams, wetlands, and forest habitats along the Project's approximately 111.5-mile pipeline route"</strong> as one of the central environmental concerns the Commission's Draft EIS must address. <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260514-5033" class="source-tag">MS Rising Motion §V.B.2</a></p>
+
+        <h3>What is on the public record</h3>
+        <p>The Draft EIS confirms that construction will disturb an estimated <strong>1,468 acres</strong> of land along the new pipeline corridors, with approximately <strong>667 acres</strong> kept permanently cleared for pipeline operation. The remaining disturbed area would be restored. <a href="https://www.govinfo.gov/content/pkg/FR-2025-05-13/html/2025-08365.htm" class="source-tag">FERC Scoping Notice, May 13, 2025</a></p>
+
+        <p>Roughly <strong>51 percent</strong> of the planned new 111.5-mile pipeline would be co-located with existing pipeline or utility rights-of-way. The remaining <strong>49 percent</strong> cuts through previously undisturbed or minimally disturbed land — adding new fragmentation to forests, fields, and wetlands. <a href="https://www.govinfo.gov/content/pkg/FR-2025-05-13/html/2025-08365.htm" class="source-tag">Scoping Notice</a></p>
+
+        <p>Construction right-of-way is <strong>75 to 135 feet wide</strong>; permanent operational right-of-way is <strong>50 feet wide</strong>, centered over the pipeline. Beyond the ROW itself, the project adds <strong>5 contractor yards</strong>, <strong>15 new permanent access roads</strong>, and <strong>87 temporary access roads</strong> — additional land disturbance not always visible on the route map. <a href="https://allstreaminsiders.com/ferc-staff-issues-the-draft-environmental-impact-statement-for-the-gulf-south-pipeline-company-llc-et-al-re-the-kosciusko-junction-pipeline-boardwalk/" class="source-tag">DEIS Summary, April 2, 2026</a></p>
+
+        <p>The Draft EIS explicitly acknowledges that <strong>long-term and permanent environmental effects will occur on "some forested lands, including forested wetlands."</strong> FERC characterizes most other effects as "temporary or short-term during construction" — but the forested wetland losses are permanent. <a href="https://midstreamcalendar.com/2026/04/06/ferc-staff-issues-the-draft-environmental-impact-statement-for-the-gulf-south-pipeline-company-llc-et-al-re-the-kosciusko-junction-pipeline-boardwalk/" class="source-tag">Midstream Calendar, April 6, 2026</a></p>
+
+        <h3>Hundreds of forested wetlands will be permanently converted</h3>
+        <p>A public comment filed by Emily Evans on April 28, 2026 confirms what is buried in the DEIS itself: <strong>the Kosciusko Junction Pipeline and Columbia Gulf Lateral will cross hundreds of palustrine forested wetlands (PFO)</strong>. The DEIS states that the conversion of those forested wetlands to scrub-shrub (PSS) or emergent (PEM) wetlands <strong>"would likely be permanent."</strong> <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260428-5046_evans_pfo_wetlands_comment.pdf" class="source-tag">Evans Comment, Acc. 20260428-5046</a></p>
+
+        <p>Palustrine forested wetlands are not interchangeable with the wetlands FERC proposes to leave behind. They provide flood control, carbon sequestration, sediment removal, and habitat for species that cannot survive in open scrub or grass wetlands. Converting them is a permanent loss of ecosystem function — even when the acreage on paper stays the same — and fails the U.S. Army Corps of Engineers' "no net loss" standard. <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260428-5046_evans_pfo_wetlands_comment.pdf" class="source-tag">Evans Comment</a></p>
+
+        <p>The U.S. Fish and Wildlife Service Mississippi Ecological Services Field Office is a <strong>cooperating agency</strong> on the EIS, which means Section 7 Endangered Species Act consultation has been initiated. The U.S. Army Corps of Engineers is also a cooperating agency, confirming that Clean Water Act Section 404 permitting for wetland and waterbody crossings is required before construction. <a href="https://www.govinfo.gov/content/pkg/FR-2025-05-13/html/2025-08365.htm" class="source-tag">Scoping Notice §III</a></p>
+
+        <div class="pending">
+          <strong>Sourcing in progress — specifics only in the full DEIS text</strong>
+          The 160-page DEIS Volume 1 and 428-page Appendix Volume 2 contain the granular numbers FERC must defend in writing — but these are not in any public summary document:
+          <ul style="text-align:left; margin-top: 12px;">
+            <li>Total wetland acreage permanently versus temporarily impacted, by wetland type</li>
+            <li>Number and type of stream and waterbody crossings (open-cut vs. horizontal directional drill vs. bore)</li>
+            <li>Federally listed threatened and endangered species, with the USFWS biological opinion status</li>
+            <li>Forest acreage clearing broken down by type, including bottomland hardwoods</li>
+            <li>Migratory Bird Treaty Act species list and any critical habitat crossed</li>
+          </ul>
+          The full DEIS is downloadable from the <a href="https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=555521">EPA EIS Database (EIS No. 20260032)</a>. Have a screen grab from a DEIS chapter we haven't seen yet? Send it to mississippiformississippi@outlook.com and we'll integrate it with the source citation.
+        </div>
+      </section>
+
+      <section id="water">
+        <h2>Water &amp; soil</h2>
+
+        <p>The 111-mile route crosses multiple major watersheds in the Mississippi Delta and central uplands. The Big Black River, Yockanookany, and Pearl River tributaries are all within the project corridor across Holmes, Attala, and Leake counties.</p>
+
+        <h3>The state water permit is still missing</h3>
+        <p>Before the project can proceed, the <strong>Mississippi Department of Environmental Quality (MDEQ)</strong> must issue a Section 401 water quality certification under the Clean Water Act. As of the Notice of Application in September 2025, that certification had <strong>not yet been issued</strong>. <a href="https://www.govinfo.gov/content/pkg/FR-2025-09-30/pdf/2025-18995.pdf" class="source-tag">FERC Notice of Application, Sept. 30, 2025</a></p>
+
+        <p>The U.S. Army Corps of Engineers must also issue a <strong>Section 404 permit</strong> for any dredge or fill in wetlands and waterbodies. USACE sits as a cooperating agency on the EIS because the project will require this permit for the crossings. <a href="https://www.govinfo.gov/content/pkg/FR-2025-05-13/html/2025-08365.htm" class="source-tag">Scoping Notice</a></p>
+
+        <h3>Why the Mississippi Delta crossing matters</h3>
+        <p>The pipeline traverses <strong>Washington, Sunflower, Humphreys, and Holmes counties</strong> — the heart of the Mississippi Delta and home to some of the most extensive bottomland hardwood wetland and floodplain ecosystems remaining in the southeastern United States. These are the systems that filter sediment, buffer flooding, and support waterfowl, fisheries, and migratory species. <a href="https://www.govinfo.gov/content/pkg/FR-2026-04-06/html/2026-06635.htm" class="source-tag">FR DEIS Notice</a></p>
+
+        <div class="pending">
+          <strong>Sourcing in progress — water specifics only in the full DEIS</strong>
+          The full record will name:
+          <ul style="text-align:left; margin-top: 12px;">
+            <li>Stream and waterbody crossings by construction method (open-cut vs. HDD vs. bore)</li>
+            <li>Specific named waterbodies — Big Black River, Yockanookany, Pearl River tributaries, and Delta drainage ways</li>
+            <li>Aquifers crossed and groundwater wells within the impact radius (Mississippi River Alluvial, Catahoula, Sparta)</li>
+            <li>Hydrostatic test water volume, source, and discharge location</li>
+            <li>Floodplain crossing acreage and erosion and sediment control commitments</li>
+          </ul>
+          Download the DEIS water resources section from <a href="https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=555521">EPA EIS Database (EIS No. 20260032)</a>.
+        </div>
+      </section>
+
+      <section id="chemicals">
+        <h2>Chemicals &amp; emissions</h2>
+
+        <p>The two new compressor stations — Holmes (23,984 hp) and Kosciusko (61,293 hp across three units) — plus the modified Isola station (24,615 hp added) and Greenville expansion (24,160 hp added) will combine to add <strong>more than 130,000 horsepower of natural-gas-fired combustion</strong> across Mississippi. Each compressor unit is a stationary source of nitrogen oxides (NOx), volatile organic compounds (VOCs), carbon monoxide, formaldehyde, and hazardous air pollutants. <a href="https://www.govinfo.gov/content/pkg/FR-2026-04-06/html/2026-06635.htm" class="source-tag">FR Notice</a></p>
+
+        <h3>What burns at the compressor stations</h3>
+        <p>All four compressor stations — new Kosciusko (3 units, 61,293 hp), new Holmes (1 unit, 23,984 hp), modified Isola (+24,615 hp), and expanded Greenville (+24,160 hp) — use <strong>natural-gas-fired turbine and compressor units</strong>, not electric. Each unit burns pipeline-quality natural gas as its operating fuel and emits NOx, carbon monoxide, VOCs, formaldehyde, and fine particulate matter. <a href="https://www.govinfo.gov/content/pkg/FR-2026-04-06/html/2026-06635.htm" class="source-tag">FR DEIS Notice</a></p>
+
+        <h3>FERC's climate gray zone</h3>
+        <p>The Draft EIS <strong>acknowledges climate change impacts from the project but explicitly does not characterize them as significant or insignificant</strong>. FERC concluded that all other effects would be "less than significant" with mitigation — but on greenhouse gases, the agency punted. <a href="https://midstreamcalendar.com/2026/04/06/ferc-staff-issues-the-draft-environmental-impact-statement-for-the-gulf-south-pipeline-company-llc-et-al-re-the-kosciusko-junction-pipeline-boardwalk/" class="source-tag">Midstream Calendar, April 6, 2026</a></p>
+
+        <h3>What 1.175 billion cubic feet a day means in carbon</h3>
+        <p>The pipeline is designed to deliver <strong>1.175 Bcf/day</strong> of natural gas — expandable to <strong>1.58 Bcf/day</strong> — primarily for electric generation, industrial load, and AI-driven hyperscale data centers. The supply comes from the Haynesville, Utica/Marcellus, and Fayetteville shale basins. When that gas is burned downstream, the resulting CO₂ load is on top of the compressor combustion emissions counted in the DEIS. <a href="https://bwpipelines.com/project/kosciusko-junction-pipeline-project" class="source-tag">Boardwalk Project Page</a></p>
+
+        <div class="pending">
+          <strong>Sourcing in progress — emissions tonnages from the full DEIS and air permit applications</strong>
+          The DEIS Vol. 1 air-quality section and Vol. 2 air permit appendices contain:
+          <ul style="text-align:left; margin-top: 12px;">
+            <li>Annual emissions inventory by pollutant (NOx, VOC, CO, SO₂, PM, formaldehyde, total HAPs) for each new and modified compressor station, in tons per year</li>
+            <li>Modeled ambient concentrations at the property line and at the nearest residences, schools, and churches</li>
+            <li>Hydrostatic testing chemicals (biocides, oxygen scavengers, corrosion inhibitors) and volumes</li>
+            <li>Horizontal directional drilling fluid composition (bentonite plus additives)</li>
+            <li>Pipeline corrosion inhibitors, pigging chemicals, and odorant injection details</li>
+            <li>Estimated lifetime methane leakage and combined CO₂-equivalent emissions</li>
+          </ul>
+          Pull from <a href="https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=555521">EPA EIS Database (EIS No. 20260032)</a>.
+        </div>
+      </section>
+
+      <section id="workforce">
+        <h2>Workforce &amp; wages</h2>
+        <p>On May 18, 2026, U.S. Representative <strong>Bennie G. Thompson</strong>, ranking member of the House Committee on Homeland Security and the congressman representing four of the host counties (Washington, Sunflower, Humphreys, Holmes), filed formal comments on the DEIS that flag economic concerns FERC has not addressed. <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Rep. Thompson Comments, Acc. 20260518-0003</a></p>
+
+        <h3>Up to 1,539 out-of-state workers on a Delta jobsite</h3>
+        <p>The DEIS projects a peak construction workforce of approximately <strong>1,790 workers</strong>. By FERC's own numbers, only up to <strong>181 of those workers (15 percent at the high end)</strong> would be local. Between <strong>80 and 95 percent</strong> — up to <strong>1,539 workers</strong> — would come from outside the project area. After construction ends, only <strong>11 to 16 permanent jobs</strong> remain. <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Thompson Comments § 4.7.3 citing DEIS</a></p>
+
+        <p>The four host counties in the Second Congressional District alone have <strong>more than 36,000 people in the civilian labor force</strong> with unemployment rates ranging from 8.8 percent in Holmes County to 15.8 percent in Humphreys County — every one of them well above the 6.0 percent statewide rate and the 5.2 percent national rate. The DEIS contemplates importing the work and exporting the wages. <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Thompson Comments citing Resource Report 5, Table 5.2-2</a></p>
+
+        <h3>The DEIS does not say what anyone will be paid</h3>
+        <p>The Applicants' own filings put total construction payroll at <strong>$55,773,802</strong> — with approximately <strong>$5.58 million (10 percent)</strong> assumed to be distributed to local workers. Roughly <strong>90 percent of construction wages would leave the host communities entirely.</strong> The DEIS does not specify job types, skill levels, pay rates, whether workers will receive employer-sponsored health insurance, or whether retirement benefits will be offered. <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Thompson Comments citing Resource Report 5 § 5.3.1</a></p>
+
+        <h3>The healthcare ripple</h3>
+        <p>Rep. Thompson warns that importing 1,500+ uninsured or underinsured workers into the Delta lands on a hospital system already stressed past breaking. Mississippi hospitals incurred approximately <strong>$600 million in uncompensated care in 2019, equal to 7.2 percent of total hospital operating costs — the third-highest share in the nation</strong>. As of the 2025 Chartis report, <strong>55 percent (37 of 67) of Mississippi's rural hospitals are at risk of closure</strong>, and 34 percent are at immediate risk within 2–3 years. <a href="https://mshealthpolicy.com/wp-content/uploads/2023/08/The-Economic-Tmpact-of-Medicaid-Expansion-Final.pdf" class="source-tag">Center for MS Health Policy, 2023</a> · <a href="https://www.chartis.com/insights/2025-rural-health-state-state" class="source-tag">Chartis 2025 Rural Hospitals Report</a></p>
+
+        <h3>The contrast: Decatur Lateral Project, Illinois</h3>
+        <p>Rep. Thompson points to the Decatur Lateral Project in Illinois (Docket Nos. CP25-94-000) as the counter-example: there, the developer committed in writing that at least half the construction workforce would be drawn from the host community, with family-sustaining wages, employer-sponsored family health insurance, pension contributions, and approximately <strong>$47 million in labor income</strong> flowing directly into the local community. "The Kosciusko Junction Pipeline currently offers my constituents nothing comparable." <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Thompson Comments p. 5</a></p>
+      </section>
+
+      <section id="ej">
+        <h2>Environmental justice</h2>
+
+        <h3>FERC removed the analysis. The data is in the record anyway.</h3>
+        <p>The Applicants' own Resource Report 5 contains a census-block-group-level environmental justice analysis. It expressly finds that <strong>the Project will impact a total of 87 census block groups, and of those, 67 — 77 percent — are environmental justice communities.</strong> <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Thompson Comments citing Resource Report 5 § 5.2.5</a></p>
+
+        <p>FERC excluded that analysis from the DEIS. Section 1.3 of the DEIS states: <strong>"all Executive Orders pertaining to environmental justice were revoked in January 2025; therefore, an assessment of effects on environmental justice communities is not required."</strong> Rep. Thompson's response: "That is not a defensible reading of NEPA. The National Environmental Policy Act still requires a meaningful assessment of a project's effects on the human environment." <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Thompson Comments p. 4</a></p>
+
+        <h3>Demographic reality of the host counties</h3>
+        <p>From the Applicants' own Resource Report 5, Tables 5.2-2 and 5.2-5:</p>
+        <ul>
+          <li><strong>Sunflower County:</strong> per capita income $19,429 · Black population share 73.0% · unemployment 10.9%</li>
+          <li><strong>Holmes County:</strong> per capita income $22,044 · Black population share 82.4% · unemployment 8.8%</li>
+          <li><strong>Humphreys County:</strong> Black population share 78.8% · unemployment 15.8% (highest in the four-county host area)</li>
+          <li><strong>Washington County:</strong> Black population share 72.0% · unemployment 8.9%</li>
+        </ul>
+        <p><a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf" class="source-tag">Thompson Comments citing Resource Report 5, Tables 5.2-2 and 5.2-5</a></p>
+      </section>
+
+      <section id="cultural">
+        <h2>Cultural &amp; tribal concerns on the record</h2>
+
+        <h3>A federally recognized tribe is asking for more time</h3>
+        <p>On May 13, 2026 — just twelve days before the public comment deadline — the <strong>Choctaw Nation of Oklahoma</strong>, through its Historic Preservation office, filed a formal letter with FERC stating: <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260513-5055" class="source-tag">Accession 20260513-5055</a></p>
+
+        <blockquote>"This project lies in our ancestral homelands and has the potential to affect numerous cultural resources… given the large amount of data and cultural resources affected, we request that an extension be granted for our review. We request that the Section 106 review be completed prior to issuing the final permit for construction of this project."</blockquote>
+
+        <p>The letter was signed by Lindsey D. Bilyeu, Program Coordinator II for NHPA Compliance Review.</p>
+
+        <h3>State Historic Preservation Office review is incomplete</h3>
+        <p>Two days later, on May 15, 2026, the applicants themselves filed a weekly status report admitting that the <strong>Mississippi State Historic Preservation Office (SHPO) has not issued final comments</strong>. The revised Phase I Cultural Resources Survey is not scheduled to be submitted to MDAH and FERC until <strong>June 2026</strong>, with an anticipated concurrence in <strong>July 2026</strong> — both of which fall <em>after</em> the May 25 public comment deadline. <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260515-5118" class="source-tag">Accession 20260515-5118</a></p>
+
+        <p>One specific archaeological site — <strong>Site 22CK716</strong> — remained under active follow-up consultation as of May 11, 2026, between the applicants' consultant Perennial Environmental Services and the Mississippi Department of Archives and History.</p>
+
+        <div class="fact-box fact-box--alert">
+          <label>Comment angle</label>
+          <p>The public is being asked to comment on a Draft EIS while a federally recognized tribe has formally requested an extension and the State Historic Preservation Office has not yet issued final concurrence on the cultural-resource record. NEPA requires the agency to consider these consultations as part of its decision-making.</p>
+        </div>
+      </section>
+
+      <section id="process">
+        <h2>Why the process itself is a concern</h2>
+
+        <h3>The Lexington scoping meeting that nobody attended</h3>
+        <p>On April 30, 2026, FERC held its public scoping meeting for the Kosciusko Junction Pipeline at the City Hall Multipurpose Building in <strong>Lexington, Mississippi (Holmes County)</strong> — ground zero for one of the two new compressor stations. The official transcript filed at FERC (Accession No. 20260514-4000) records the meeting in its entirety: <strong>"No one from the public showed up to make any comments. The meeting was closed at 6:30 p.m."</strong> <a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260514-4000_lexington_scoping_minutes.pdf" class="source-tag">Lexington Scoping Minutes, Acc. 20260514-4000</a></p>
+
+        <p>FERC will cite the absence of attendance as evidence that the community has no objections. The truer reading is that the comment period landed in planting season in one of the most underserved counties in the country, with minimal notice and no real outreach — then closed before the DEIS itself was filed. This is the public record FERC says counts as community engagement.</p>
+
+        <h3>Three filings, three holes in the record</h3>
+        <p>Three separate filings on the public record in mid-May 2026 — within days of each other — suggest a regulatory process that is not yet ready for a final environmental decision:</p>
+
+        <ol>
+          <li><strong>FERC issued an Environmental Information Request on April 23, 2026</strong> — meaning Commission staff themselves found gaps in the applicants' submission that required additional response. The applicants are providing weekly status reports as those gaps are worked through. <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260515-5118" class="source-tag">Acc. 20260515-5118</a></li>
+          <li><strong>The Choctaw Nation of Oklahoma requested an extension</strong> on cultural resource consultation on May 13, 2026, twelve days before public comments close. <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260513-5055" class="source-tag">Acc. 20260513-5055</a></li>
+          <li><strong>Mississippi Rising Coalition</strong>, a Mississippi non-profit, filed a motion for leave to intervene out of time on May 14, 2026, stating that "Movant became aware of the Project's significant environmental impacts on the communities, ecosystems, and waterways it represents only following the Commission's Notice of Intent to Prepare an EIS and the subsequent publication of the Draft EIS in April 2026, which revealed the full scope and nature of the Project's potential harms for the first time." <a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260514-5033" class="source-tag">Acc. 20260514-5033</a></li>
+        </ol>
+
+        <p>Together these filings make the procedural argument simple: the public comment deadline should not close while the cultural-resource record is incomplete, tribal consultation is unfinished, and affected communities are still discovering the project's scope.</p>
+      </section>
+
+      <!-- ACTION KIT -->
+      <section id="action-kit" style="margin-top: 64px;"></section>
+    </main>
+
+  </div>
+</div>
+
+<!-- ACTION KIT (full-width dark section) -->
+<section class="action-kit" aria-labelledby="action-title">
+  <div class="container">
+    <div class="section-eyebrow">Action kit</div>
+    <h2 id="action-title">Put your concerns on the federal record before May 25</h2>
+    <p>You do not need to be a lawyer, a scientist, or a "party" to this case to comment. FERC is required by law to consider every timely comment in the Final Environmental Impact Statement.</p>
+
+    <div class="action-grid">
+
+      <!-- 1. eComment -->
+      <div class="action-card">
+        <div class="action-card-num">1</div>
+        <h3>File an eComment with FERC</h3>
+        <p>The fastest way. Text-only, no account required for brief comments. Reference Docket <strong>CP25-547</strong> or <strong>CP25-549</strong>.</p>
+        <a href="https://ferconline.ferc.gov/QuickComment.aspx" target="_blank" rel="noopener" class="btn btn--primary">Open FERC eComment <span class="btn-arrow">→</span></a>
+      </div>
+
+      <!-- 2. eFiling -->
+      <div class="action-card">
+        <div class="action-card-num">2</div>
+        <h3>File a longer comment via eFiling</h3>
+        <p>For comments with attachments, photos of your land, or a longer written statement. Requires a free FERC account.</p>
+        <a href="https://ferconline.ferc.gov/eFiling.aspx" target="_blank" rel="noopener" class="btn btn--ghost">Open FERC eFiling <span class="btn-arrow">→</span></a>
+      </div>
+
+      <!-- 3. Mail -->
+      <div class="action-card">
+        <div class="action-card-num">3</div>
+        <h3>Mail a paper comment</h3>
+        <p>Reference Docket CP25-547 or CP25-549. Allow several days. Mail must arrive at FERC by 5:00 PM ET on May 25.</p>
+        <div style="font-family: var(--mono); font-size: 12px; color: var(--paper); opacity: 0.85; line-height: 1.6; background: rgba(245, 239, 225, 0.06); padding: 14px; border-radius: 6px; margin-bottom: 16px;">
+Debbie-Anne A. Reese, Secretary<br>
+Federal Energy Regulatory Commission<br>
+888 First Street NE, Room 1A<br>
+Washington, DC 20426
+        </div>
+      </div>
+
+      <!-- 4. State legislators -->
+      <div class="action-card">
+        <div class="action-card-num">4</div>
+        <h3>Contact your state legislators</h3>
+        <p>FERC has the final say, but your Mississippi senator and representative can write letters into the record and pressure state agencies (MDEQ, MS PSC) to weigh in.</p>
+        <a href="https://billstatus.ls.state.ms.us/members/findmember.htm" target="_blank" rel="noopener" class="btn btn--ghost">Find my MS legislators <span class="btn-arrow">→</span></a>
+      </div>
+
+      <!-- 5. Call -->
+      <div class="action-card">
+        <div class="action-card-num">5</div>
+        <h3>Call FERC's Office of Public Participation</h3>
+        <p>If you've never filed a comment before, the OPP will walk you through it for free. They are required to help any member of the public.</p>
+        <a href="tel:+12025026595" class="btn btn--ghost">Call (202) 502-6595 <span class="btn-arrow">→</span></a>
+      </div>
+
+      <!-- 6. Share -->
+      <div class="action-card">
+        <div class="action-card-num">6</div>
+        <h3>Share with neighbors</h3>
+        <p>Most landowners along the route still don't know this is happening. Share this dossier on Facebook, in your church bulletin, with your county supervisor.</p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmississippiformississippi.org%2Fkosciusko-junction" target="_blank" rel="noopener" class="btn btn--ghost">Share on Facebook <span class="btn-arrow">→</span></a>
+      </div>
+
+    </div>
+
+    <!-- SAMPLE COMMENT -->
+    <div style="margin-top: 64px; max-width: 760px;">
+      <div class="section-eyebrow">Copy-ready template</div>
+      <h3 style="color: var(--paper); font-size: 1.5rem;">A sample public comment you can personalize</h3>
+      <p>Edit the bracketed sections with your own county, what's on your land, and the concerns most important to you. The most effective comments are specific and personal — but a personalized version of the template below is far better than no comment at all.</p>
+
+      <div class="comment-template" id="comment-template">RE: Kosciusko Junction Pipeline Project, FERC Docket Nos. CP25-547-000 and CP25-549-000 — Draft Environmental Impact Statement Comments
+
+Dear Secretary Reese,
+
+I am writing to submit public comments on the Draft Environmental Impact Statement for the Kosciusko Junction Pipeline Project, issued April 1, 2026.
+
+I [own land / live / farm / work / worship / hunt and fish] in [County name], Mississippi, within the area that would be affected by the proposed pipeline, compressor stations, or related facilities. [Add 1-2 sentences here about what is on your land, where your water comes from, what is downstream, or what makes your specific location matter — this is the part regulators cannot get anywhere else.]
+
+I urge the Commission to address the following concerns before issuing a Final EIS or any certificate of public convenience and necessity:
+
+1. CULTURAL AND TRIBAL CONSULTATION IS INCOMPLETE. The Choctaw Nation of Oklahoma filed a request for extension on May 13, 2026 (Accession 20260513-5055) stating that the project lies in their ancestral homelands and asking that Section 106 review be completed prior to any final permit. The applicants' own May 15, 2026 weekly status report (Accession 20260515-5118) confirms that the Mississippi State Historic Preservation Office has not yet issued final comments and that the revised cultural resources survey will not be submitted until June 2026, with concurrence anticipated in July 2026 — after the comment window closes. The Commission should not finalize an EIS until tribal and SHPO consultation is complete.
+
+2. THE PUBLIC COMMENT WINDOW IS INADEQUATE. Mississippi Rising Coalition's May 14, 2026 motion (Accession 20260514-5033) documents that affected Mississippi communities are still becoming aware of the project's scope. Combined with FERC's own April 23, 2026 Environmental Information Request — which identified gaps in the applicants' submission — these facts argue that the May 25 deadline should be extended until the record is complete.
+
+3. WILDLIFE AND HABITAT IMPACTS. The 111-mile route crosses streams, wetlands, and forested habitat across nine Mississippi counties (Washington, Sunflower, Humphreys, Holmes, Attala, Leake, Newton, Jasper, and Clarke). [Add specifics: any creek, hunting land, fishery, or habitat near you that you know personally.] I ask that the Final EIS fully evaluate impacts to federally listed threatened and endangered species, migratory bird habitat, and bottomland hardwood forest, and require avoidance — not just mitigation — where any listed species is present.
+
+4. WATER AND SOIL. The project would draw hydrostatic test water from local sources and cross multiple watersheds, including the Pearl River, Big Black, and Yockanookany drainages. [Add specifics about your well, your downstream property, or your county's water source.] I ask that the Final EIS fully disclose the volume and source of hydrostatic test water, the chemicals used in horizontal directional drilling fluids, and the status of MDEQ Section 401 water quality certification.
+
+5. AIR QUALITY AND CHEMICAL EMISSIONS. The proposed Kosciusko Compressor Station (61,293 hp) and Holmes Compressor Station (23,984 hp), plus modifications adding 24,615 hp at Isola and 24,160 hp at Greenville, will add more than 130,000 horsepower of new natural-gas-fired combustion across Mississippi. I ask that the Final EIS fully model annual emissions of NOx, VOCs, formaldehyde, and total hazardous air pollutants, and disclose ambient concentrations at the property line of every nearby residence, school, church, and hospital.
+
+6. ENVIRONMENTAL JUSTICE — THE ANALYSIS IS IN THE RECORD AND FERC EXCLUDED IT. The Applicants' own Resource Report 5, Section 5.2.5, finds that 67 of the 87 census block groups affected by this project — 77 percent — are environmental justice communities. The DEIS expressly excluded that analysis, citing the January 2025 revocation of environmental justice Executive Orders. As Rep. Bennie G. Thompson noted in his May 18, 2026 comments (Accession 20260518-0003), this is not a defensible reading of NEPA. The National Environmental Policy Act independently requires a meaningful assessment of effects on the human environment. I ask that FERC incorporate Resource Report 5's census-block-group EJ analysis into the Final EIS.
+
+7. WORKFORCE AND HEALTHCARE IMPACTS. The DEIS Section 4.7.3 projects a peak construction workforce of 1,790, with 80 to 95 percent (up to 1,539 workers) imported from outside the project area, and only 11 to 16 permanent jobs remaining after construction. The DEIS does not disclose wage rates, health insurance, or retirement benefits for these workers. Mississippi hospitals already absorb the third-highest uncompensated care burden in the country, and 55 percent of our rural hospitals are at risk of closure. The Final EIS must analyze the impact of importing 1,500+ potentially uninsured workers on local hospital safety nets and on local construction wages.
+
+8. PERMANENT LOSS OF PALUSTRINE FORESTED WETLANDS. The DEIS itself states that conversion of palustrine forested (PFO) wetlands to scrub-shrub (PSS) or emergent (PEM) wetlands "would likely be permanent." Hundreds of PFO wetlands will be crossed. Restoring acreage on paper does not restore ecosystem function and does not meet the U.S. Army Corps of Engineers "no net loss" standard. Compensatory mitigation should focus on creation, restoration, enhancement, and preservation of PFO habitat — not on replacement with lower-function wetlands.
+
+9. PUBLIC CONVENIENCE AND NECESSITY. Under Section 7 of the Natural Gas Act, the Commission must find that the project is required by the public convenience and necessity. The 1.175 Bcf/day capacity reported by industry trade press is tied to Southeast power and data-center demand — not to Mississippi consumers. The total project cost of $991.5 million (Resource Report 5) yields only 11 to 16 permanent Mississippi jobs by FERC's own numbers. I ask that the Commission disclose the precedent agreements supporting this capacity and weigh those identified customer needs against the environmental, public-health, and landowner costs imposed on the nine Mississippi counties the pipeline would cross.
+
+Thank you for considering these comments. I respectfully request that they be made part of the official record in Docket Nos. CP25-547-000 and CP25-549-000.
+
+Sincerely,
+[Your name]
+[Mailing address — County, MS]
+[Email address]</div>
+
+      <button class="copy-btn" data-copy-target="#comment-template">Copy template to clipboard</button>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="section" id="sources" style="background: var(--paper-2);">
+  <div class="container container--narrow">
+    <div class="section-eyebrow">Primary sources</div>
+    <h2>Every claim on this page links to its source</h2>
+    <p>If you can't find a citation for something we've said, write to us and we will add it or correct it.</p>
+
+    <h3>FERC docket filings (eLibrary)</h3>
+    <ul>
+      <li><a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260518-0003_thompson_deis_comments.pdf">Acc. 20260518-0003</a> — U.S. Rep. Bennie G. Thompson, Comments on Draft EIS, May 6, 2026 (filed May 18)</li>
+      <li><a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260515-5118_weekly-status-report.pdf">Acc. 20260515-5118</a> — Applicants' Weekly Status Report on Mississippi SHPO Comments, May 15, 2026</li>
+      <li><a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260514-5033">Acc. 20260514-5033</a> — Mississippi Rising Coalition Motion for Leave to Intervene Out of Time, May 14, 2026</li>
+      <li><a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260514-4000_lexington_scoping_minutes.pdf">Acc. 20260514-4000</a> — Lexington, MS Public Scoping Meeting Transcript, April 30, 2026 (no public attendance)</li>
+      <li><a href="https://elibrary.ferc.gov/eLibrary/docfamily?accessionnumber=20260513-5055">Acc. 20260513-5055</a> — Choctaw Nation of Oklahoma Request for Consultation Extension, May 13, 2026</li>
+      <li><a href="https://elibrary.ferc.gov/eLibrary/search" target="_blank" rel="noopener" data-filing="20260428-5046_evans_pfo_wetlands_comment.pdf">Acc. 20260428-5046</a> — Emily Evans, Public Comment on PFO Wetland Impacts, April 28, 2026</li>
+      <li><a href="https://elibrary.ferc.gov/eLibrary/search">FERC eLibrary General Search</a> — search by docket CP25-547 or CP25-549 for the full filing record</li>
+    </ul>
+
+    <h3>Resource Reports cited (applicant filings)</h3>
+    <ul>
+      <li><strong>Resource Report 5</strong> — FERC Accession No. 20250912-5150 — Socioeconomic and Environmental Justice analysis (referenced extensively by Rep. Thompson)</li>
+      <li><strong>Draft EIS § 4.7.3</strong> — FERC Accession No. 20260401-3005 — Socioeconomic effects of construction</li>
+      <li><strong>Draft EIS § 1.3</strong> — FERC's stated reason for excluding environmental justice analysis</li>
+    </ul>
+
+    <h3>Federal Register</h3>
+    <ul>
+      <li><a href="https://www.govinfo.gov/content/pkg/FR-2026-04-06/html/2026-06635.htm">FR Doc. 2026-06635</a> — Notice of Availability of the Draft EIS, published April 6, 2026 (Vol. 91, No. 65)</li>
+    </ul>
+
+    <h3>FERC project page</h3>
+    <ul>
+      <li><a href="https://www.ferc.gov/kosciusko-junction-pipeline-project">ferc.gov/kosciusko-junction-pipeline-project</a> — FERC's official project landing page</li>
+    </ul>
+
+    <h3>Industry reporting</h3>
+    <ul>
+      <li><a href="https://pgjonline.com/news/2025/december/gulf-south-s-111-mile-kosciusko-junction-pipeline-enters-federal-review">PGJ Online</a> — "Gulf South's 111-Mile Kosciusko Junction Pipeline Enters Federal Review," December 16, 2025</li>
+    </ul>
+
+    <h3>Coalition partner</h3>
+    <ul>
+      <li><a href="mailto:admin@msrising.com">Mississippi Rising Coalition</a> — admin@msrising.com · (228) 407-6176 · 5 Chandeleur Cove, Ocean Springs, MS 39564</li>
+    </ul>
+
+    <h3>Congressional record</h3>
+    <ul>
+      <li><a href="https://benniethompson.house.gov">U.S. Rep. Bennie G. Thompson (MS-02)</a> — represents Washington, Sunflower, Humphreys, Holmes counties and portions of Attala and Leake · Washington office: (202) 225-5876 · Greenville office: (662) 335-9003</li>
+    </ul>
+
+    <h3>Supporting public health and economic data</h3>
+    <ul>
+      <li><a href="https://mshealthpolicy.com/wp-content/uploads/2023/08/The-Economic-Tmpact-of-Medicaid-Expansion-Final.pdf">Center for Mississippi Health Policy</a> — The Economic Impact of Medicaid Expansion, August 2023 (uncompensated care figures)</li>
+      <li><a href="https://www.chartis.com/insights/2025-rural-health-state-state">Chartis 2025 Rural Hospitals State of the State Report</a> — 55 percent of Mississippi rural hospitals at risk of closure</li>
+      <li><a href="https://www.cpwr.com/research/data-center/the-construction-chart-book/">CPWR Construction Chart Book</a> — The Center for Construction Research and Training, health insurance data</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="10" fill="#c08a2a"/>
+            <path d="M14 46 L14 18 L24 36 L32 18 L40 36 L50 18 L50 46" stroke="#1c1c14" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="32" cy="50" r="2.5" fill="#2d3d22"/>
+          </svg>
+          <span class="brand-text">
+            Mississippi For Mississippi
+            <small>Power Projects Watch</small>
+          </span>
+        </div>
+        <p style="margin-top:16px; max-width: 38ch;">Grassroots citizen action hub tracking the regulatory dockets that decide what gets built across rural Mississippi.</p>
+      </div>
+      <div>
+        <h4>Primary records</h4>
+        <ul>
+          <li><a href="https://elibrary.ferc.gov/eLibrary/search">FERC eLibrary</a></li>
+          <li><a href="https://www.psc.state.ms.us/">MS Public Service Commission</a></li>
+          <li><a href="https://www.mdeq.ms.gov/">MS Dept. of Environmental Quality</a></li>
+          <li><a href="https://www.federalregister.gov/">Federal Register</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:mississippiformississippi@outlook.com">mississippiformississippi@outlook.com</a></li>
+          <li>Philadelphia, Mississippi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mississippi For Mississippi PAC.</span>
+      <span>Every fact on this site links to its primary regulatory source.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+
+</div>
+
+<script>
+// Mississippi For Mississippi — Power Projects Watch
+// Lightweight, no framework
+
+/* ---------- Countdown to Kosciusko Junction deadline ---------- */
+// FERC deadline: May 25, 2026 at 5:00 PM Eastern Time
+// 5:00 PM ET in UTC = 21:00 UTC (EDT, UTC-4) — May is in DST
+const DEADLINE_UTC = new Date('2026-05-25T21:00:00Z');
+
+function updateCountdown() {
+  const now = new Date();
+  const diffMs = DEADLINE_UTC - now;
+
+  const daysEl  = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl  = document.getElementById('cd-mins');
+  const secsEl  = document.getElementById('cd-secs');
+
+  if (!daysEl) return;
+
+  if (diffMs <= 0) {
+    daysEl.textContent = '0';
+    hoursEl.textContent = '0';
+    minsEl.textContent = '0';
+    secsEl.textContent = '0';
+    return;
+  }
+
+  const days  = Math.floor(diffMs / 86400000);
+  const hours = Math.floor((diffMs % 86400000) / 3600000);
+  const mins  = Math.floor((diffMs % 3600000) / 60000);
+  const secs  = Math.floor((diffMs % 60000) / 1000);
+
+  daysEl.textContent  = days;
+  hoursEl.textContent = String(hours).padStart(2, '0');
+  minsEl.textContent  = String(mins).padStart(2, '0');
+  secsEl.textContent  = String(secs).padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ---------- TOC active-link highlighting on dossier pages ---------- */
+const tocLinks = document.querySelectorAll('.dossier-toc a');
+if (tocLinks.length) {
+  const sections = Array.from(tocLinks).map(a => {
+    const id = a.getAttribute('href').slice(1);
+    return { link: a, section: document.getElementById(id) };
+  }).filter(x => x.section);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sections.forEach(s => {
+          s.link.classList.toggle('active', s.section === entry.target);
+        });
+      }
+    });
+  }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s.section));
+}
+
+/* ---------- Copy-to-clipboard for comment templates ---------- */
+document.querySelectorAll('[data-copy-target]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetSel = btn.dataset.copyTarget;
+    const el = document.querySelector(targetSel);
+    if (!el) return;
+    const text = el.textContent.trim();
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btn.textContent;
+      btn.textContent = '✓ Copied to clipboard';
+      btn.classList.add('copy-btn--copied');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('copy-btn--copied');
+      }, 2200);
+    });
+  });
+});
+
+
+/* === BUNDLED-FILE VIEW ROUTER === */
+(function() {
+  const views = {
+    home: document.getElementById('view-home'),
+    kj:   document.getElementById('view-kj')
+  };
+  function show(name) {
+    if (!views[name]) name = 'home';
+    Object.keys(views).forEach(k => views[k].classList.toggle('active', k === name));
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  // Intercept clicks on data-view links
+  document.body.addEventListener('click', function(e) {
+    const a = e.target.closest('a[data-view]');
+    if (!a) return;
+    e.preventDefault();
+    const v = a.getAttribute('data-view');
+    history.pushState({view: v}, '', '#' + v);
+    show(v);
+  });
+  window.addEventListener('popstate', function() {
+    const v = (location.hash || '#home').slice(1);
+    show(v);
+  });
+  // Initial route
+  const initial = (location.hash || '#home').slice(1);
+  show(initial);
+})();
+</script>
+</body>
+</html>
